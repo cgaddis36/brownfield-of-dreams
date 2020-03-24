@@ -12,9 +12,9 @@ describe "An Admin can edit a tutorial" do
     click_on "Add Video"
 
     within "#new-video-form" do
-      fill_in "video_title", with: "How to tie your shoes."
-      fill_in "video_description", with: "Over, under, around and through, Meet Mr. Bunny Rabbit, pull and through."
-      fill_in "video_video_id", with: "J7ikFUlkP_k"
+      fill_in 'video_title', with: "How to tie your shoes."
+      fill_in 'video_description', with: "Over, under, around and through, Meet Mr. Bunny Rabbit, pull and through."
+      fill_in 'video_video_id', with: "J7ikFUlkP_k"
       click_on "Create Video"
     end
 
