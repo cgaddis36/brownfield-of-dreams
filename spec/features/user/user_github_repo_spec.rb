@@ -2,14 +2,14 @@ require "rails_helper"
 describe "User Dashboard: Github Repositories" do
   vcr_options = {:record => :new_episodes }
   it "as a user i should see my github repo section" do
-    user1 = User.create!(email: "user1.gmail.com",
+    user1 = User.create!(email: "user1@gmail.com",
                       first_name: "user1",
                       last_name: "user1",
                       password: "hamburger1",
                       role: 0,
                       github_token: ENV["GITHUB_API_KEY"])
 
-    user2 = User.create!(email: "user2.gmail.com",
+    user2 = User.create!(email: "user2@gmail.com",
                       first_name: "user2",
                       last_name: "user2",
                       password: "hamburger2",
@@ -25,8 +25,11 @@ describe "User Dashboard: Github Repositories" do
     allow(user2).to receive(:repos) {user2_repos}
 
     visit '/dashboard'
-    expect(page).to have_link('User 1 Repositories', count: 5)
-    expect(page).to_not have_link('User 2 Repositories')
+    expect(page).to have_content("GitHub Repositories")
+    within "#repos" do
+      expect(page).to have_link('User 1 Repositories', count: 5)
+      expect(page).to_not have_link('User 2 Repositories')
+    end
   end
 
   it "doesn't display github section when a user does not have a token" do
