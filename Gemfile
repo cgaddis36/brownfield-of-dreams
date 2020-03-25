@@ -12,6 +12,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'bcrypt', '~> 3.1.7'
 gem 'travis'
+gem 'rubocop-faker'
 
 gem 'webpacker', '~> 3.5'
 
