@@ -1,4 +1,4 @@
-class Repo
+class Follower
   attr_reader :name, :url
   def initialize(attributes)
     @name = attributes[:name]
