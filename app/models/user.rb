@@ -12,7 +12,7 @@ class User < ApplicationRecord
     if github_token.blank?
       return nil
     else
-      github_api = GithubFacade.new
+      github_api = GithubService.new
       github_api.repo_creation(self).map {|repo| Repo.new(repo)}
     end
   end
@@ -21,7 +21,7 @@ class User < ApplicationRecord
     if github_token.blank?
       return nil
     else
-      github_api = GithubFacade.new
+      github_api = GithubService.new
       github_api.followers(self).map {|repo| Follower.new(repo)}
     end
   end
