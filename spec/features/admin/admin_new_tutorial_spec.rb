@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 feature "An admin" do
+  vcr_options = {:record => :new_episodes }
   scenario "can create a new tutorial" do
     admin = create(:admin)
 
@@ -11,6 +12,7 @@ feature "An admin" do
     fill_in'tutorial[title]', with: "Man jumps 250 foot cliff"
     fill_in'tutorial[description]', with: "Killer GoPro video"
     fill_in'tutorial[thumbnail]', with: "https://kristennoel.com/wp-content/uploads/2017/08/KN-Jump-thumbnail-FI.jpg"
+
 
     click_on("Save")
 
