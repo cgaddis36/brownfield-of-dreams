@@ -13,8 +13,16 @@ class User < ApplicationRecord
       return nil
     else
       github_api = GithubFacade.new
-      require "pry"; binding.pry
       github_api.repo_creation(self).map {|repo| Repo.new(repo)}
-    end 
+    end
+  end
+
+  def followers
+    if github_token.blank?
+      return nil
+    else
+      github_api = GithubFacade.new
+      github_api.followers(self).map {|repo| Follower.new(repo)}
+    end
   end
 end
