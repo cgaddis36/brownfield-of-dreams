@@ -24,6 +24,9 @@ Rails.application.routes.draw do
     end
   end
 
+  get 'auth/github', as: "github_login"
+  get '/auth/:provider/callback', to: "sessions#update"
+
   get '/login', to: "sessions#new"
   post '/login', to: "sessions#create"
   delete '/logout', to: "sessions#destroy"
@@ -34,6 +37,7 @@ Rails.application.routes.draw do
 
   # Is this being used?
   get '/video', to: 'video#show'
+
 
   resources :users, only: [:new, :create, :update, :edit]
 
