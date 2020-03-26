@@ -13,7 +13,6 @@ feature "An admin" do
     fill_in'tutorial[description]', with: "Killer GoPro video"
     fill_in'tutorial[thumbnail]', with: "https://kristennoel.com/wp-content/uploads/2017/08/KN-Jump-thumbnail-FI.jpg"
 
-
     click_on("Save")
 
     tutorial = Tutorial.last
@@ -22,14 +21,22 @@ feature "An admin" do
 
     expect(page).to have_content("Successfully created tutorial.")
   end
-end
+  
+  scenario "can create a new tutorial" do
+    admin = create(:admin)
 
-# When I visit '/admin/tutorials/new'
-# And I fill in 'title' with a meaningful name
-# And I fill in 'description' with a some content
-# And I fill in 'thumbnail' with a valid YouTube thumbnail
-# And I click on 'Save'
-# Then I should be on '/tutorials/{NEW_TUTORIAL_ID}'
-# And I should see a flash message that says "Successfully created tutorial."
-#
-#  Sad path accounted for
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
+
+    visit new_admin_tutorial_path
+
+    fill_in'tutorial[title]', with: ""
+    fill_in'tutorial[description]', with: ""
+    fill_in'tutorial[thumbnail]', with: "https://kristennoel.com/wp-content/uploads/2017/08/KN-Jump-thumbnail-FI.jpg"
+
+    click_on("Save")
+
+    expect(current_path).to eq(new_admin_tutorial_path)
+
+    expect(page).to have_content("Title can't be blank and Description can't be blank")
+  end
+end
