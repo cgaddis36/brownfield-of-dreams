@@ -24,8 +24,7 @@ describe "User Dashboard: Github Followers" do
     allow(user1).to receive(:repos) {user1_repos}
     allow(user1).to receive(:followers) {followers1}
     allow(user2).to receive(:followers) {followers2}
-    allow(user1).to receive(:following) {[]}
-
+    
     visit '/dashboard'
     expect(page).to have_content("Followers")
     within "#followers" do
