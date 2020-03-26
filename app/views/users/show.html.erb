@@ -10,7 +10,9 @@
   <section>
     <h1>Bookmarked Segments</h1>
   </section>
-  <% if current_user.github_token %>
+  <% if current_user.github_token.blank? %>
+    <%= button_to "Connect to Github", github_login_path %>
+  <% else %>
     <h1>GitHub Repositories</h1>
       <section id="repos">
         <% current_user.repos.each do |repo| %>
