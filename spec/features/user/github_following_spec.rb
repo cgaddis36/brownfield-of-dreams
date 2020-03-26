@@ -1,7 +1,7 @@
 require "rails_helper"
-describe "User Dashboard: Github Followers" do
+describe "User Dashboard: Github Following" do
   vcr_options = {:record => :new_episodes }
-  it "users can see all followers and links to their page" do
+  it "users can see all users they are following and links to their page" do
     user1 = User.create!(email: "user1@gmail.com",
                       first_name: "user1",
                       last_name: "user1",
@@ -19,18 +19,19 @@ describe "User Dashboard: Github Followers" do
 
     user1_repos = 5.times.map { Repo.new(name: "User 1 Repositories", html_url: "www.github.com") }
     followers1 = 5.times.map { Follower.new(name: "Follower1", html_url: "www.github.com") }
-    followers2 = 5.times.map { Follower.new(name: "Follower2", html_url: "www.github.com") }
+    following1 = 5.times.map { Following.new(name: "Following1", html_url: "www.github.com") }
+    following2 = 5.times.map { Following.new(name: "Following2", html_url: "www.github.com") }
 
     allow(user1).to receive(:repos) {user1_repos}
     allow(user1).to receive(:followers) {followers1}
-    allow(user2).to receive(:followers) {followers2}
-    allow(user1).to receive(:following) {[]}
+    allow(user1).to receive(:following) {following1}
+    allow(user2).to receive(:following) {following2}
 
     visit '/dashboard'
-    expect(page).to have_content("Followers")
-    within "#followers" do
-      expect(page).to have_link("Follower1", count: 5)
-      expect(page).to_not have_link("Follower2")
+    expect(page).to have_content("Following")
+    within "#following" do
+      expect(page).to have_link("Following1", count: 5)
+      expect(page).to_not have_link("Following2")
     end
   end
 end

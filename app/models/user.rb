@@ -25,4 +25,13 @@ class User < ApplicationRecord
       github_api.followers(self).map {|repo| Follower.new(repo)}
     end
   end
+
+  def following
+    if github_token.blank?
+      return nil
+    else
+      github_api = GithubService.new
+      github_api.following(self).map {|repo| Following.new(repo)}
+    end
+  end
 end
