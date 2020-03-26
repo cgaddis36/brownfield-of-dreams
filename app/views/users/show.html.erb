@@ -10,21 +10,29 @@
   <section>
     <h1>Bookmarked Segments</h1>
   </section>
+
   <% if current_user.github_token.blank? %>
     <%= button_to "Connect to Github", github_login_path %>
   <% else %>
-    <h1>GitHub Repositories</h1>
+    <% if current_user.repos.length > 0 %>
       <section id="repos">
+        <h1>GitHub Repositories</h1>
         <% current_user.repos.each do |repo| %>
           <%= link_to repo.name, repo.url  %><br>
         <% end %>
       </section>
+    <% end %>
+
+    <% if current_user.followers.length > 0 %>
       <section id="followers">
         <h2>Followers</h2>
         <% current_user.followers.each do |follower| %>
           <%= link_to follower.name, follower.url  %><br>
         <% end %>
       </section>
+    <% end %>
+
+    <% if current_user.following.length > 0 %>
       <section id="following">
         <h2>Following</h2>
         <% current_user.following.each do |following| %>
@@ -32,4 +40,5 @@
         <% end %>
       </section>
     <% end %>
+  <% end %>
 </section>
