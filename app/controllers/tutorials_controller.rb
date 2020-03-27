@@ -8,7 +8,12 @@ class TutorialsController < ApplicationController
     if current_user
       @tutorials = Tutorial.all
     else
-      @tutorials = Tutorial.all.reject{|tutorial| tutorial.classroom? }
+      @tutorials = classroom
     end
+  end
+  
+  private
+  def classroom
+    Tutorial.where('classroom = false')
   end
 end
