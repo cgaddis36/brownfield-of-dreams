@@ -10,7 +10,7 @@ describe 'An admin user can add tags to tutorials' do
 
     visit "/admin/dashboard"
 
-    within(first(".admin-tutorial-card")) do
+    within(first(".admin-tutorial-card-#{tutorial.id}")) do
       click_on 'Edit'
     end
 
