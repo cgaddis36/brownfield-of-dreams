@@ -1,8 +1,8 @@
 require 'rails_helper'
  RSpec.describe "As a Visitor" do
    it "On tutorials show page, I should only see tutorials with classroom content if I am logged in." do
-     tutorial1 = create(:tutorial)
-     tutorial2 = create(:tutorial, classroom: true)
+     tutorial1 = Tutorial.create!(title: "Building blocks ABC", description: "This is easy!", thumbnail: "https://media.nbcnewyork.com/2019/09/abcblocks.gif?resize=850%2C478", classroom: false)
+     tutorial2 = Tutorial.create!(title: "Coding for dummies", description: "Really short video", thumbnail: "https://cdn.shopify.com/s/files/1/0922/7486/products/Letters-Hape.jpg?v=1544761721", classroom: true)
 
      visit tutorials_path
 
