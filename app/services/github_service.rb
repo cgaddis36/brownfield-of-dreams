@@ -19,8 +19,6 @@ class GithubService
     end
 
     def conn
-      Faraday.new(url: "https://api.github.org") do |faraday|
-        faraday.headers["X-API-KEY"] = ENV['GITHUB_API_KEY']
-      end
+      Faraday.new(url: "https://api.github.com")
     end
 end
