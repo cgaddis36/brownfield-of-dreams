@@ -22,7 +22,7 @@ class User < ApplicationRecord
       return nil
     else
       github_api = GithubService.new
-      github_api.followers(self).map {|repo| Follower.new(repo)}
+      github_api.follower_creation(self).map {|repo| Follower.new(repo)}
     end
   end
 
@@ -31,7 +31,7 @@ class User < ApplicationRecord
       return nil
     else
       github_api = GithubService.new
-      github_api.following(self).map {|repo| Following.new(repo)}
+      github_api.following_creation(self).map {|repo| Following.new(repo)}
     end
   end
 end

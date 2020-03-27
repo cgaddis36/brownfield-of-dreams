@@ -23,6 +23,7 @@ describe "User Dashboard: Github Repositories" do
 
     allow(user1).to receive(:repos) {user1_repos}
     allow(user2).to receive(:repos) {user2_repos}
+
     allow(user1).to receive(:followers) {[]}
     allow(user1).to receive(:following) {[]}
 

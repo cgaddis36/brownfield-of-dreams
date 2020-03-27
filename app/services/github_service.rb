@@ -1,11 +1,15 @@
 class GithubService
 
-  def repos(user)
+  def repo_creation(user)
     get_json("/user/repos")
   end
 
-  def followers(user)
+  def follower_creation(user)
     get_json("/user/followers")
+  end
+
+  def following_creation(user)
+    get_json("/user/following")
   end
 
   private
