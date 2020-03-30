@@ -1,21 +1,23 @@
 class GithubService
 
   def repo_creation(user)
-    get_json("/user/repos")
+    response = get_json("/user/repos", user)
+    JSON.parse(response.body, symbolize_names: true)
   end
 
   def follower_creation(user)
-    get_json("/user/followers")
+    response = get_json("/user/followers", user)
+    JSON.parse(response.body, symbolize_names: true)
   end
 
   def following_creation(user)
-    get_json("/user/following")
+    response = get_json("/user/following", user)
+    JSON.parse(response.body, symbolize_names: true)
   end
 
   private
-    def get_json(url)
-      response = conn.get(url)
-      JSON.parse(response.body, symbolize_names: true)[:results]
+    def get_json(url, user)
+      response = conn.get(url, nil, { Authorization: "token #{user.github_token}"})
     end
 
     def conn
