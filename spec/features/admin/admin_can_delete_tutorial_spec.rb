@@ -17,6 +17,7 @@ feature "An admin can delete a tutorial" do
       click_link 'Delete'
     end
 
+    expect(page).to_not have_css(".admin-tutorial-card-#{tutorial1.id}")
     expect(page).to have_css(".admin-tutorial-card-#{tutorial2.id}")
   end
 
