@@ -186,4 +186,67 @@ http_interactions:
       string: 80.0.3987.106
     http_version: null
   recorded_at: Wed, 25 Mar 2020 02:12:02 GMT
+- request:
+    method: get
+    uri: https://www.googleapis.com/youtube/v3/videos?id=J7ikFUlkP_k&key&part=snippet,contentDetails,statistics
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.17.3
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Vary:
+      - Origin
+      - X-Origin
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Mon, 30 Mar 2020 18:24:27 GMT
+      Expires:
+      - Mon, 30 Mar 2020 18:24:27 GMT
+      Cache-Control:
+      - private, max-age=0
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      X-Xss-Protection:
+      - 1; mode=block
+      Server:
+      - GSE
+      Alt-Svc:
+      - quic=":443"; ma=2592000; v="46,43",h3-Q050=":443"; ma=2592000,h3-Q049=":443";
+        ma=2592000,h3-Q048=":443"; ma=2592000,h3-Q046=":443"; ma=2592000,h3-Q043=":443";
+        ma=2592000,h3-T050=":443"; ma=2592000
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+         "error": {
+          "errors": [
+           {
+            "domain": "usageLimits",
+            "reason": "keyInvalid",
+            "message": "Bad Request"
+           }
+          ],
+          "code": 400,
+          "message": "Bad Request"
+         }
+        }
+    http_version: null
+  recorded_at: Mon, 30 Mar 2020 18:24:27 GMT
 recorded_with: VCR 5.1.0
