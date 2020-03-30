@@ -27,7 +27,11 @@
       <section id="followers">
         <h2>Followers</h2>
         <% current_user.followers.each do |follower| %>
-          <%= link_to follower.name, follower.url  %><br>
+          <%= link_to follower.name, follower.url  %>
+
+          <% if follower.database? && !current_user.friendships.include?(follower)%>
+            <%= link_to "Add Friend", friendship_path(current_user, follower.name), method: :post %>
+          <% end %><br>
         <% end %>
       </section>
     <% end %>
@@ -36,7 +40,20 @@
       <section id="following">
         <h2>Following</h2>
         <% current_user.following.each do |following| %>
-          <%= link_to following.name, following.url  %><br>
+          <%= link_to following.name, following.url  %>
+
+          <% if following.database? && !current_user.friendships.include?(following) %>
+            <%= link_to "Add Friend", friendship_path(current_user, follower.name), method: :post %>
+          <% end %><br>
+        <% end %>
+      </section>
+    <% end %>
+
+    <% if current_user.friendships.length > 0 %>
+      <section id="friends">
+        <h2>Friendships</h2>
+        <% current_user.friendships.each do |friend| %>
+          <%= link_to friend.find_friend.first_name, friend.find_friend.url  %>
         <% end %>
       </section>
     <% end %>
