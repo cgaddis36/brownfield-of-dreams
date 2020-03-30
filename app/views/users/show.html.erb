@@ -11,7 +11,7 @@
     <h1>Bookmarked Segments</h1>
   </section>
 
-  <% if current_user.github_token.blank? %>
+  <% if !current_user.github_token %>
     <%= button_to "Connect to Github", github_login_path %>
   <% else %>
     <% if current_user.repos.length > 0 %>
