@@ -9,6 +9,10 @@ class User < ApplicationRecord
   enum role: [:default, :admin]
   has_secure_password
 
+  def bookmark_finder
+    self.videos.joins(:tutorial)    
+  end
+
   def repos
     if github_token.blank?
       return nil
