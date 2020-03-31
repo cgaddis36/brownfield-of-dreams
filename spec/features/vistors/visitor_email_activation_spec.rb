@@ -21,7 +21,7 @@ RSpec.describe "User Email Activation" do
     expect(page).to have_content("Status: Inactive")
   end
 
-  it "user is sent email after registering" do
+  it "user status changes after email has been sent and confirmed" do
     visit "/"
 
     click_on "Register"
