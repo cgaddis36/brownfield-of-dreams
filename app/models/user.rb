@@ -10,7 +10,15 @@ class User < ApplicationRecord
   has_secure_password
 
   def bookmark_finder
-    self.videos.joins(:tutorial)    
+    videos.joins(:tutorial)
+  end
+
+  def status
+    if email_confirm
+      "Active"
+    else
+      "Inactive"
+    end
   end
 
   def repos
