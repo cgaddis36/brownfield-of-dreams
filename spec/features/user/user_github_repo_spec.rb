@@ -1,6 +1,6 @@
 require "rails_helper"
 describe "User Dashboard: Github Repositories" do
-  it "as a user i should see my github repo section", :vcr do
+  it "as a user I should see my github repo section", :vcr do
     user1 = User.create!(email: 'user1@gmail.com',
                       first_name: 'Meghan',
                       last_name: 'Stovall',

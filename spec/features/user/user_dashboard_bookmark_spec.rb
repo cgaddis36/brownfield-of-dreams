@@ -52,12 +52,6 @@ RSpec.describe 'User Friendships' do
       expect(page).to have_content(@video7.title)
       expect(page).to_not have_content(@video3.title)
       expect(page).to_not have_content(@video6.title)
-    end 
+    end
   end
 end
-
-# As a logged in user
-# When I visit '/dashboard'
-# Then I should see a list of all bookmarked segments under the Bookmarked Segments section
-# And they should be organized by which tutorial they are a part of
-# And the videos should be ordered by their position
