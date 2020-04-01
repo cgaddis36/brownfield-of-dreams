@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Follower
   attr_reader :name, :url
 
@@ -7,7 +9,7 @@ class Follower
   end
 
   def database?
-    if User.where(url: self.url).empty?
+    if User.where(url: url).empty?
       false
     else
       true

@@ -1,14 +1,16 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe 'User Friendships' do
   before(:each) do
     @user1 = User.create!(email: 'user1@gmail.com',
-                      first_name: 'Meghan',
-                      last_name: 'Stovall',
-                      password: 'password1',
-                      role: 0,
-                      github_token: "d3dce97f4fe7d42e913985756a13986d2e3db9e9",
-                      url: "https://github.com/meghanstovall")
+                          first_name: 'Meghan',
+                          last_name: 'Stovall',
+                          password: 'password1',
+                          role: 0,
+                          github_token: 'd3dce97f4fe7d42e913985756a13986d2e3db9e9',
+                          url: 'https://github.com/meghanstovall')
 
     @tutorial = create(:tutorial)
     @tutorial1 = create(:tutorial)
@@ -52,7 +54,7 @@ RSpec.describe 'User Friendships' do
       expect(page).to have_content(@video7.title)
       expect(page).to_not have_content(@video3.title)
       expect(page).to_not have_content(@video6.title)
-    end 
+    end
   end
 end
 

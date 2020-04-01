@@ -1,0 +1,19 @@
+
+
+Layout/LineLength:
+  Max: 2500
+
+Metrics/BlockLength:
+  Max: 100
+
+Lint/UselessAssignment:
+  Enabled: False
+
+Style/IfUnlessModifier:
+  Enabled: False
+
+Style/Documentation:
+  Enabled: False
+
+Style/ClassAndModuleChildren:
+  Enabled: False
