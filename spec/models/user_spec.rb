@@ -78,5 +78,13 @@ RSpec.describe User, type: :model do
 
       expect(user1.bookmark_finder[0]).to eq(video)
     end
+    
+    it "#status" do
+      user1 = User.create(email: 'user1@email.com', password: 'password1', first_name:'Jim', role: 0, email_confirm: true)
+      expect(user1.status).to eq("Active")
+
+      user2 = User.create(email: 'user1@email.com', password: 'password1', first_name:'Jim', role: 0, email_confirm: false)
+      expect(user2.status).to eq("Inactive")
+    end
   end
 end
