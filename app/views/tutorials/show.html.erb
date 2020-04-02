@@ -6,8 +6,11 @@
   <% if !@facade.videos.empty? %>
   <ul>
     <% @facade.videos.each do |video| %>
-      <li>
-        <h3><%= link_to video.title, tutorial_path(video_id: video.id), class: "show-link", id: video.position %></h3>
+      <li id="video-<%= video.id %>">
+        <h3><%= link_to video.title, tutorial_path(video_id: video.id), class: "show-link", id: video.position %></h3><br>
+        <% if current_user != nil && current_user.admin? %>
+          <h5><%= button_to "Edit", admin_video_path(video.id), method: :patch %></h5>
+        <% end %>
       </li>
     <% end %>
   </ul>

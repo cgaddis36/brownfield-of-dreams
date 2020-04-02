@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Follower, type: :model do
+RSpec.describe Following, type: :model do
   describe "methods" do
     it "#database?" do
       user = User.create!(email: 'meghanstovall@gmail.com',
@@ -12,11 +12,11 @@ RSpec.describe Follower, type: :model do
                   url: 'https://github.com/meghanstovall',
                   email_confirm: true)
 
-      follower1 = Follower.new({name: "Meghan", html_url: 'https://github.com/meghanstovall'})
-      expect(follower1.database?).to eq(true)
+      following1 = Following.new({name: "Meghan", html_url: 'https://github.com/meghanstovall'})
+      expect(following1.database?).to eq(true)
 
-      follower2 = Follower.new({name: "Chase", html_url: 'https://github.com/cgaddis36'})
-      expect(follower2.database?).to eq(false)
+      following2 = Following.new({name: "Chase", html_url: 'https://github.com/cgaddis36'})
+      expect(following2.database?).to eq(false)
     end
   end
 end
