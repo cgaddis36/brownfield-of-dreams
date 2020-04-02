@@ -7,8 +7,6 @@ class FriendshipsController < ApplicationController
     friendship = current_user.friendships.create!(user_id: user_id, friend_id: friend.id)
     if friendship.save
       flash[:notice] = "#{params[:friend_name]} has been added as a friend!"
-    else
-      flash[:error] = 'Friendship not created'
     end
     redirect_to dashboard_path
   end
