@@ -1,5 +1,6 @@
-class InviteMailer < ApplicationMailer
+# frozen_string_literal: true
 
+class InviteMailer < ApplicationMailer
   def invite(invited_user, inviter)
     @inviter = inviter
     @invited_handle = invited_user[:login]
