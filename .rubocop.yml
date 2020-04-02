@@ -1,17 +1,30 @@
-
-
-Layout/LineLength:
-  Max: 2500
+AllCops:
+  Include:
+    - app/**/*.rb
 
 Metrics/BlockLength:
-  Max: 100
+  Max: 20
 
-Lint/UselessAssignment:
-  Enabled: False
+Layout/LineLength:
+  Max: 110
+  IgnoredPatterns: ['.paginate']
+
+Style/MixinUsage:
+  Exclude:
+    - bin/update
+    - bin/setup
+
+Naming/MemoizedInstanceVariableName:
+  Exclude:
+    - app/controllers/sessions_controller.rb
 
 Style/IfUnlessModifier:
-  Enabled: False
+    Exclude:
+      - app/controllers/admin/tutorials_controller.rb
 
+Metrics/AbcSize:
+  Max: 20
+  
 Style/Documentation:
   Enabled: False
 
