@@ -11,6 +11,9 @@ Rails.application.routes.draw do
   get '/register', to: 'users#new'
   post '/user/:user_id/friendship/:friend_name', to: 'friendships#create', as: 'friendship'
 
+  get '/invite', to: 'invites#new'
+  post '/invite', to: 'invites#create', as: 'new_invite'
+
   namespace :admin do
     get "/dashboard", to: "dashboard#show"
     resources :tutorials, only: [:create, :edit, :update, :destroy, :new] do
