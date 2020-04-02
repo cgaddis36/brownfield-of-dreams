@@ -1,0 +1,6 @@
+<h1> Hi <%= @invited_handle %></h1><br><br>
+
+<p><%= @inviter.first_name %> <%= @inviter.last_name %> thinks you could benefit from our Tutorials, click this link to join: </p>
+<%= link_to 'Join Now', 'https://localhost:3000/register' %>
+
+<h3>Hope to see you soon <%= @invited_handle %>!</h3>
