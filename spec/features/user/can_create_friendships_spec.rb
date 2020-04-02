@@ -16,7 +16,7 @@ RSpec.describe 'User Friendships' do
                       last_name: 'Gaddis',
                       password: 'password2',
                       role: 0,
-                      github_token: "49217ac146e7db9618653e116848727e9780dacd",
+                      github_token: ENV['c_token'],
                       url: "https://github.com/cgaddis36",
                       email_confirm: true)
 
