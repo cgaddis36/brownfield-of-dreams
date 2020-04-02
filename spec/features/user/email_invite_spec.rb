@@ -1,26 +1,26 @@
 require 'rails_helper'
 
-RSpec.describe 'User Invite', type: :feature do
+RSpec.describe "User Email Invite" do
   before(:each) do
-    @user = User.create!(email: 'user1@gmail.com',
-                      first_name: 'Meghan',
-                      last_name: 'Stovall',
-                      password: 'password1',
-                      role: 0,
-                      github_token: "d3dce97f4fe7d42e913985756a13986d2e3db9e9",
-                      url: "https://github.com/meghanstovall",
-                      email_confirm: true)
+    @user1 = User.create!(email: 'user1@gmail.com',
+                        first_name: 'Meghan',
+                        last_name: 'Stovall',
+                        password: 'password1',
+                        role: 0,
+                        github_token: ENV['token'],
+                        url: "https://github.com/meghanstovall",
+                        email_confirm: true)
 
-    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user1)
   end
 
-  it 'can send an invite with a Github handle', :vcr do
-    visit "/dashboard"
+  it "can send email with valid github handle", :vcr do
+    visit '/dashboard'
 
     click_on 'Send an Invite'
     expect(current_path).to eq('/invite')
 
-    fill_in :github_handle, with: "cgaddis36"
+    fill_in :invite_github_handle, with: "BrianZanti"
 
     click_on "Send Invite"
     expect(current_path).to eq("/dashboard")
@@ -28,13 +28,13 @@ RSpec.describe 'User Invite', type: :feature do
     expect(page).to have_content("Successfully sent invite!")
   end
 
-  it "can't invite without a github handle", :vcr do
+  it "can't send email with out a valid github email", :vcr do
     visit "/dashboard"
 
     click_on 'Send an Invite'
     expect(current_path).to eq('/invite')
 
-    fill_in :github_handle, with: "holmesm8"
+    fill_in :invite_github_handle, with: "cgaddis36"
 
     click_on "Send Invite"
     expect(current_path).to eq("/dashboard")
