@@ -5,20 +5,22 @@ require 'rails_helper'
 RSpec.describe 'User Friendships' do
   before(:each) do
     @user1 = User.create!(email: 'user1@gmail.com',
-                          first_name: 'Meghan',
-                          last_name: 'Stovall',
-                          password: 'password1',
-                          role: 0,
-                          github_token: 'd3dce97f4fe7d42e913985756a13986d2e3db9e9',
-                          url: 'https://github.com/meghanstovall')
+                      first_name: 'Meghan',
+                      last_name: 'Stovall',
+                      password: 'password1',
+                      role: 0,
+                      github_token: ENV['token'],
+                      url: "https://github.com/meghanstovall",
+                      email_confirm: true)
 
     @user2 = User.create!(email: 'user2@gmail.com',
-                          first_name: 'Chase',
-                          last_name: 'Gaddis',
-                          password: 'password2',
-                          role: 0,
-                          github_token: '49217ac146e7db9618653e116848727e9780dacd',
-                          url: 'https://github.com/cgaddis36')
+                      first_name: 'Chase',
+                      last_name: 'Gaddis',
+                      password: 'password2',
+                      role: 0,
+                      github_token: ENV['c_token'],
+                      url: "https://github.com/cgaddis36",
+                      email_confirm: true)
 
     @user3 = User.create!(email: 'user3@gmail.com',
                           first_name: 'User',

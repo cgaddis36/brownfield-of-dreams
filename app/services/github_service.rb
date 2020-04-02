@@ -16,6 +16,11 @@ class GithubService
     JSON.parse(response.body, symbolize_names: true)
   end
 
+  def user_profile(github_handle, user)
+    response = get_json("/users/#{github_handle}", user)
+    JSON.parse(response.body, symbolize_names: true)
+  end
+
   private
 
   def get_json(url, user)

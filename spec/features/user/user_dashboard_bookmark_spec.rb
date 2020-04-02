@@ -2,15 +2,16 @@
 
 require 'rails_helper'
 
-RSpec.describe 'User Friendships' do
+RSpec.describe 'User Bookmarks' do
   before(:each) do
     @user1 = User.create!(email: 'user1@gmail.com',
-                          first_name: 'Meghan',
-                          last_name: 'Stovall',
-                          password: 'password1',
-                          role: 0,
-                          github_token: 'd3dce97f4fe7d42e913985756a13986d2e3db9e9',
-                          url: 'https://github.com/meghanstovall')
+                      first_name: 'Meghan',
+                      last_name: 'Stovall',
+                      password: 'password1',
+                      role: 0,
+                      github_token: ENV['token'],
+                      url: "https://github.com/meghanstovall",
+                      email_confirm: true)
 
     @tutorial = create(:tutorial)
     @tutorial1 = create(:tutorial)
@@ -27,7 +28,7 @@ RSpec.describe 'User Friendships' do
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user1)
   end
 
-  it 'can see an Add Friend button in the github dashboard', :vcr do
+  it 'can bookmark videos in a tutorial', :vcr do
     visit tutorial_video_path(@tutorial, @video1)
 
     click_on 'Bookmark'
@@ -57,9 +58,3 @@ RSpec.describe 'User Friendships' do
     end
   end
 end
-
-# As a logged in user
-# When I visit '/dashboard'
-# Then I should see a list of all bookmarked segments under the Bookmarked Segments section
-# And they should be organized by which tutorial they are a part of
-# And the videos should be ordered by their position
