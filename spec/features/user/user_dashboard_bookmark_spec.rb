@@ -1,15 +1,17 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe 'User Bookmarks' do
   before(:each) do
     @user1 = User.create!(email: 'user1@gmail.com',
-                      first_name: 'Meghan',
-                      last_name: 'Stovall',
-                      password: 'password1',
-                      role: 0,
-                      github_token: ENV['token'],
-                      url: "https://github.com/meghanstovall",
-                      email_confirm: true)
+                          first_name: 'Meghan',
+                          last_name: 'Stovall',
+                          password: 'password1',
+                          role: 0,
+                          github_token: ENV['token'],
+                          url: 'https://github.com/meghanstovall',
+                          email_confirm: true)
 
     @tutorial = create(:tutorial)
     @tutorial1 = create(:tutorial)

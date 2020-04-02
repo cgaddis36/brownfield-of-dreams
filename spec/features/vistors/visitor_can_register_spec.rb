@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe 'vister can create an account', :js do
@@ -24,7 +26,7 @@ describe 'vister can create an account', :js do
     fill_in 'user[password]', with: password
     fill_in 'user[password_confirmation]', with: password
 
-    click_on'Create Account'
+    click_on 'Create Account'
 
     expect(current_path).to eq(dashboard_path)
 
@@ -34,20 +36,20 @@ describe 'vister can create an account', :js do
     expect(page).to_not have_content('Sign In')
   end
 
-  it "shows error when the username is already taken" do
+  it 'shows error when the username is already taken' do
     user = create(:user)
 
     visit new_user_path
 
     fill_in 'user[email]', with: user.email
-    fill_in 'user[first_name]', with: "John"
-    fill_in 'user[last_name]', with: "Doe"
-    fill_in 'user[password]', with: "1332"
-    fill_in 'user[password_confirmation]', with: "1332"
+    fill_in 'user[first_name]', with: 'John'
+    fill_in 'user[last_name]', with: 'Doe'
+    fill_in 'user[password]', with: '1332'
+    fill_in 'user[password_confirmation]', with: '1332'
 
-    click_on "Create Account"
+    click_on 'Create Account'
 
     expect(current_path).to eq(new_user_path)
-    expect(page).to have_content("Username already exists")
+    expect(page).to have_content('Username already exists')
   end
 end

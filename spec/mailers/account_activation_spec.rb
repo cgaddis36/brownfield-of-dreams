@@ -1,8 +1,10 @@
-require "rails_helper"
+# frozen_string_literal: true
+
+require 'rails_helper'
 
 RSpec.describe AccountActivationMailer, type: :mailer do
   describe 'emails' do
-    user = User.create!(first_name: 'User22', email: 'user22@gmail.com', password: "password22")
+    user = User.create!(first_name: 'User22', email: 'user22@gmail.com', password: 'password22')
     let(:mail) { described_class.inform(user).deliver_now }
 
     it 'renders the subject' do
@@ -14,7 +16,7 @@ RSpec.describe AccountActivationMailer, type: :mailer do
     end
 
     it 'renders the sender email' do
-      expect(mail.from).to eq(["no-reply@brownfieldofdreams.io"])
+      expect(mail.from).to eq(['no-reply@brownfieldofdreams.io'])
     end
 
     it 'assigns @name' do

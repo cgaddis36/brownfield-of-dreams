@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class TutorialsController < ApplicationController
   def show
     tutorial = Tutorial.find(params[:id])
@@ -5,14 +7,15 @@ class TutorialsController < ApplicationController
   end
 
   def index
-    if current_user
-      @tutorials = Tutorial.all
-    else
-      @tutorials = classroom
-    end
+    @tutorials = if current_user
+                   Tutorial.all
+                 else
+                   classroom
+                 end
   end
-  
+
   private
+
   def classroom
     Tutorial.where('classroom = false')
   end
