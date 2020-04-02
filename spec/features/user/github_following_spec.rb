@@ -6,16 +6,18 @@ describe "User Dashboard: Github Following" do
                       last_name: 'Stovall',
                       password: 'password1',
                       role: 0,
-                      github_token: "d3dce97f4fe7d42e913985756a13986d2e3db9e9",
-                      url: "https://github.com/meghanstovall")
+                      github_token: ENV['token'],
+                      url: "https://github.com/meghanstovall",
+                      email_confirm: true)
 
     user2 = User.create!(email: 'user2@gmail.com',
                       first_name: 'Chase',
                       last_name: 'Gaddis',
                       password: 'password2',
                       role: 0,
-                      github_token: "49217ac146e7db9618653e116848727e9780dacd",
-                      url: "https://github.com/cgaddis36")
+                      github_token: ENV['c_token'],
+                      url: "https://github.com/cgaddis36",
+                      email_confirm: true)
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user1)
 
