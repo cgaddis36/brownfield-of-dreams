@@ -5,6 +5,13 @@ RSpec.describe User, type: :model do
     it {should validate_presence_of(:email)}
     it {should validate_presence_of(:first_name)}
     it {should validate_presence_of(:password)}
+    it {should validate_uniqueness_of(:email)}
+  end
+
+  describe "relationships" do
+    it { should have_many :friendships }
+    it { should have_many :user_videos }
+    it { should have_many(:videos).through(:user_videos)}
   end
 
   describe 'roles' do
@@ -61,6 +68,15 @@ RSpec.describe User, type: :model do
       allow(user2).to receive(:following) {user2_following}
 
       expect(user2.following).to eq(user2_following)
+    end
+
+    it "#bookmark_finder" do
+      user1 = User.create(email: 'user1@email.com', password: 'password1', first_name:'Jim', role: 0)
+      tutorial = create(:tutorial)
+      video = create(:video, tutorial_id: tutorial.id)
+      user_video = UserVideo.create(video_id: video.id, user_id: user1.id)
+
+      expect(user1.bookmark_finder[0]).to eq(video)
     end
   end
 end
