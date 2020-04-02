@@ -24,7 +24,7 @@ class GithubService
   private
 
   def get_json(url, user)
-    response = conn.get(url, nil, { Authorization: "token #{user.github_token}" })
+    conn.get(url, nil, { Authorization: "token #{user.github_token}" })
   end
 
   def conn
